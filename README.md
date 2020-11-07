@@ -1,4 +1,4 @@
-# 淮滨管理系统
+# webpack + react + typescript + antd
 
 ## 安装
 

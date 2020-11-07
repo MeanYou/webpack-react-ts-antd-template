@@ -9,6 +9,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const safePostCssParser = require('postcss-safe-parser')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 
 const proConf = env => {
   const useSourceMap = env.sourcemap;
@@ -27,7 +28,7 @@ const proConf = env => {
       {
         from: paths.static,
         to: paths.build,
-        ignore: ['template.html','*.DS_Store'],
+        ignore: ['template.html', '*.DS_Store'],
       },
     ]),
     // /**
@@ -61,7 +62,12 @@ const proConf = env => {
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash:8].css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-    })
+    }),
+    /**
+     * 替换antd的momentjs为dayjs
+     * 可以大幅减少打包体积
+     */
+    new AntdDayjsWebpackPlugin()
   ];
   if (useCompress) {
     /**
