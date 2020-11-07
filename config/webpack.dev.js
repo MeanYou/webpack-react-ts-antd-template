@@ -33,7 +33,7 @@ const devConf = env => {
       hot: true,
       port: 3000,
       proxy: {
-        '/xxx': 'http://127.0.0.1:8888'
+        '/hb-api': 'https://www.mingtukeji.com'
       },
     },
 

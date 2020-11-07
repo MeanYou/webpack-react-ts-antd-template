@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 const Login = () => {
     const handleLogin = useCallback(async () => {
-        const res = await Axios.get('/data/data.json');
-        alert(res.data.name);
+        const res = await axios.get('/data/data.json');
+        console.log(res);
     }, []);
     return (
         <div>

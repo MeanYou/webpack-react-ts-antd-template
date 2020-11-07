@@ -3,6 +3,7 @@ const path = require('path')
 const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
 
 module.exports = env => {
@@ -252,6 +253,11 @@ module.exports = env => {
           PUBLIC_URL: JSON.stringify(publicUrl)
         }
       }),
+      /**
+       * 替换antd的momentjs为dayjs
+       * 可以大幅减少打包体积
+       */
+      new AntdDayjsWebpackPlugin()
     ],
     resolve: {
       alias: {
